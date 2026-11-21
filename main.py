@@ -37,7 +37,7 @@ fuente = pygame.font.SysFont("arial", 18)
 fuente_chica = pygame.font.SysFont("arial", 14)
 fuente_orden = pygame.font.SysFont("arial", 22, bold=True)
 
-# ------------------------------------------------------------------- estado
+# estado
 cuadricula = [[0] * COLUMNAS for _ in range(FILAS)]
 inicio = (0, 0)
 meta = (9, 9)
@@ -53,7 +53,7 @@ ultimo_paso = 0
 modo_pincel = None         # "poner" o "quitar" mientras se arrastra el mouse
 
 
-# ---------------------------------------------------------------- búsqueda
+# búsqueda
 def limpiar_busqueda():
     global busqueda, estado, nombre_algoritmo
     busqueda = None
@@ -94,7 +94,7 @@ def reiniciar_todo():
     limpiar_busqueda()
 
 
-# ------------------------------------------------------------------ dibujo
+# dibujo
 def centro(posicion):
     fila, columna = posicion
     return (columna * TAM_CELDA + TAM_CELDA // 2, fila * TAM_CELDA + TAM_CELDA // 2)
@@ -206,7 +206,7 @@ def dibujar_panel():
              fuente_chica, (170, 170, 170), 10, y + 80)
 
 
-# ------------------------------------------------------------ eventos / mouse
+# eventos / mouse
 def celda_bajo_mouse(posicion_mouse):
     x, y = posicion_mouse
     if y >= ALTO_GRID or x >= ANCHO:
@@ -264,7 +264,7 @@ def manejar_evento(evento):
             retraso_ms = min(2000, int(retraso_ms * 1.4))
 
 
-# --------------------------------------------------------------- bucle principal
+# bucle principal
 def main():
     global ultimo_paso
     ejecutando = True

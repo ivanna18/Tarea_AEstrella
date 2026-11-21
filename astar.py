@@ -3,7 +3,7 @@ import heapq
 from nodo import Nodo
 
 
-# ---------------------------------------------------------------- heurísticas
+# heurísticas
 def heuristica_manhattan(a, b):
     """Distancia Manhattan.
 
@@ -22,7 +22,7 @@ def heuristica_cero(a, b):
     return 0
 
 
-# ------------------------------------------------------------------ utilidades
+# utilidades
 def vecinos(cuadricula, posicion):
     """Celdas libres adyacentes (4 direcciones)."""
     filas = len(cuadricula)
@@ -43,7 +43,7 @@ def reconstruir_camino(nodo):
     return camino[::-1]
 
 
-# ------------------------------------------------------------------------ A*
+#  A*
 def buscar(cuadricula, inicio, meta, heuristica=heuristica_manhattan):
     """A* escrito como GENERADOR: después de expandir cada nodo hace un `yield`
     con una foto del estado de la búsqueda. Así main.py puede dibujar el
