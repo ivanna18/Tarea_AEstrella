@@ -3,7 +3,7 @@
 Implementación del algoritmo **A\*** en Python con visualización paso a paso en pygame.
 Tarea "Elige tu Algoritmo" — Opción A.
 
-**Video de la demo:** 
+video: https://drive.google.com/drive/folders/1VV-RNx9cyixzawRvxRyAzeR-MJ4LxdKi?usp=share_link
 
 ## Estructura
 

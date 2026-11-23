@@ -5,26 +5,17 @@ from nodo import Nodo
 
 # heurísticas
 def heuristica_manhattan(a, b):
-    """Distancia Manhattan.
-
-    Es admisible porque en una cuadrícula con movimientos solo en 4 direcciones
-    (arriba, abajo, izquierda, derecha) y costo 1 por paso, el camino real
-    nunca puede ser MÁS corto que |dfila| + |dcolumna|. Los obstáculos solo
-    pueden alargar el camino, nunca acortarlo, así que h nunca sobreestima.
-    También es consistente: h(n) <= 1 + h(vecino).
-    """
+   
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
 
 def heuristica_cero(a, b):
-    """h = 0 para todo: A* se vuelve Dijkstra (búsqueda no informada).
-    Sirve de base de comparación sobre la misma instancia."""
+    
     return 0
 
 
 # utilidades
 def vecinos(cuadricula, posicion):
-    """Celdas libres adyacentes (4 direcciones)."""
     filas = len(cuadricula)
     columnas = len(cuadricula[0])
     fila, columna = posicion
@@ -35,7 +26,6 @@ def vecinos(cuadricula, posicion):
 
 
 def reconstruir_camino(nodo):
-    """Sigue los 'padre' desde la meta hasta el inicio."""
     camino = []
     while nodo is not None:
         camino.append(nodo.posicion)
@@ -45,17 +35,6 @@ def reconstruir_camino(nodo):
 
 #  A*
 def buscar(cuadricula, inicio, meta, heuristica=heuristica_manhattan):
-    """A* escrito como GENERADOR: después de expandir cada nodo hace un `yield`
-    con una foto del estado de la búsqueda. Así main.py puede dibujar el
-    proceso paso a paso en lugar de recibir solo el resultado final.
-
-    Cada yield es un diccionario:
-        actual    : Nodo que se acaba de expandir
-        frontera  : {posicion: Nodo} nodos descubiertos, aún sin expandir
-        cerrados  : {posicion: Nodo} nodos ya expandidos (en orden de expansión)
-        camino    : lista de posiciones inicio->meta (solo al terminar con éxito)
-        terminado : True en el último yield
-    """
     abiertos = [Nodo(inicio, None, 0, heuristica(inicio, meta))]  # heap por f
     mejor_g = {inicio: 0}   # menor g conocido para cada celda
     cerrados = {}           # el dict conserva el orden de expansión
@@ -107,7 +86,6 @@ def buscar(cuadricula, inicio, meta, heuristica=heuristica_manhattan):
 
 
 def _frontera(abiertos, cerrados, mejor_g):
-    """Nodos vigentes del heap (descarta entradas viejas o ya expandidas)."""
     return {
         n.posicion: n
         for n in abiertos

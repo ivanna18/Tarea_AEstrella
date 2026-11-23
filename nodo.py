@@ -1,13 +1,5 @@
 class Nodo:
-    """Un nodo de la búsqueda: una celda de la cuadrícula más su 'historial'.
-
-    posicion : (fila, columna) de la celda
-    padre    : nodo desde el que llegamos (sirve para reconstruir el camino)
-    g        : costo real recorrido desde el inicio hasta este nodo
-    h        : estimación heurística del costo restante hasta la meta
-    f        : g + h, la prioridad con la que A* elige qué nodo expandir
-    """
-
+    
     def __init__(self, posicion, padre=None, g=0, h=0):
         self.posicion = posicion
         self.padre = padre

@@ -7,7 +7,7 @@ from astar import buscar, heuristica_cero, heuristica_manhattan
 
 pygame.init()
 
-# ------------------------------------------------------------- configuración
+#  configuración
 ANCHO = 800
 ALTO_GRID = 800
 ALTO_PANEL = 110
